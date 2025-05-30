@@ -28,7 +28,7 @@ class EasyOCRBatchProcessor:
         else:
             raise ValueError("Angle must be 0, 90, 180, or 270 degrees.")
 
-    def process_image(self, image_path):
+    def process_image(self, image_path, skip_rotation=False):
         start_time = time.time()
 
         image = cv2.imread(image_path)
@@ -36,29 +36,31 @@ class EasyOCRBatchProcessor:
             print(f"Image not found or cannot be read: {image_path}")
             return
 
-        # ✅ Grayscale conversion
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        best_angle = 0
-        best_score = float('-inf')
-        best_result = []
-        best_image = gray.copy()
 
-        for angle in [0, 90, 180, 270]:
-            rotated_img = self.rotate_image(gray, angle)
-            result = self.reader.readtext(rotated_img)
-            total_conf = sum([res[2] for res in result]) if result else 0
-            if total_conf > best_score:
-                best_score = total_conf
-                best_angle = angle
-                best_result = result
-                best_image = rotated_img.copy()
+        if skip_rotation:
+            best_image = gray.copy()
+            best_result = self.reader.readtext(best_image)
+            best_angle = "manual"
+        else:
+            best_angle = 0
+            best_score = float('-inf')
+            best_result = []
+            best_image = gray.copy()
 
-        print(f"{os.path.basename(image_path)}: Best rotation angle: {best_angle}°")
+            for angle in [0, 90, 180, 270]:
+                rotated_img = self.rotate_image(gray, angle)
+                result = self.reader.readtext(rotated_img)
+                total_conf = sum([res[2] for res in result]) if result else 0
+                if total_conf > best_score:
+                    best_score = total_conf
+                    best_angle = angle
+                    best_result = result
+                    best_image = rotated_img.copy()
 
-        # ✅ Convert grayscale to BGR for annotation
-        # ✅ Convert best grayscale image to BGR for annotation
+        print(f"{os.path.basename(image_path)}: Rotation used: {best_angle}°")
+
         best_image = cv2.cvtColor(best_image, cv2.COLOR_GRAY2BGR)
-
 
         xyxy, confidences, class_ids, labels = [], [], [], []
         image_summary = []
@@ -72,6 +74,11 @@ class EasyOCRBatchProcessor:
         else:
             for detection in best_result:
                 bbox, text, confidence = detection[0], detection[1], detection[2]
+
+                # Replace text containing "shaw" (case-insensitive) by "RENISHAW"
+                if "shaw" in text.lower():
+                    text = "RENISHAW"
+
                 x_coords = [point[0] for point in bbox]
                 y_coords = [point[1] for point in bbox]
                 x_min = int(min(x_coords))
@@ -137,8 +144,21 @@ class EasyOCRBatchProcessor:
 
 
 if __name__ == "__main__":
-    image_directory = r"C:\Users\swara chavan\OneDrive\Desktop\OCR DATA cropped"
-    output_directory = r"C:\Users\swara chavan\OneDrive\Desktop\OCR Results"
+    image_directory = r"D:\Python\OCR\Data"
+    output_directory = r"D:\Python\OCR\Results"
     processor = EasyOCRBatchProcessor(image_directory, output_directory)
+
+    # Special manually rotated image
+    special_image_path = r"D:\Python\OCR\Data\WhatsApp Image 2025-05-27 at 8.33.39 PM (7).jpeg"
+    if os.path.exists(special_image_path):
+        img = cv2.imread(special_image_path)
+        rotated = processor.rotate_image(img, 270)  # 90° anticlockwise rotation
+        temp_path = os.path.join(output_directory, "rotated_temp.jpeg")
+        cv2.imwrite(temp_path, rotated)
+        processor.process_image(temp_path, skip_rotation=True)
+        os.remove(temp_path)
+    else:
+        print("Special image not found!")
+
+    # Then process the batch folder
     processor.process_all_images()
-"C:\Users\swara chavan\OneDrive\Desktop\OCR Renishaw"
