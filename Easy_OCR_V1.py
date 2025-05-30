@@ -10,7 +10,8 @@ class EasyOCRBatchProcessor:
     def __init__(self, image_directory, output_directory, gpu=True):
         self.image_directory = image_directory
         self.output_directory = output_directory
-        self.reader = easyocr.Reader(['en'], gpu=gpu)
+        self.reader = easyocr.Reader(['en'], gpu=gpu,download_enabled=False,model_storage_directory=r"models")
+
         if not os.path.exists(self.output_directory):
             os.makedirs(self.output_directory)
         self.summary_lines = []
@@ -144,12 +145,11 @@ class EasyOCRBatchProcessor:
 
 
 if __name__ == "__main__":
-    image_directory = r"D:\Python\OCR\Data"
-    output_directory = r"D:\Python\OCR\Results"
+    image_directory = r"OCR images cropped"
+    output_directory = r"OCR Results"
     processor = EasyOCRBatchProcessor(image_directory, output_directory)
 
-    # Special manually rotated image
-    special_image_path = r"D:\Python\OCR\Data\WhatsApp Image 2025-05-27 at 8.33.39 PM (7).jpeg"
+    '''special_image_path = r"C:\Users\swara chavan\OneDrive\Desktop\OCR DATA cropped\WhatsApp Image 2025-05-27 at 8.33.39 PM (7).jpeg"
     if os.path.exists(special_image_path):
         img = cv2.imread(special_image_path)
         rotated = processor.rotate_image(img, 270)  # 90° anticlockwise rotation
@@ -158,7 +158,8 @@ if __name__ == "__main__":
         processor.process_image(temp_path, skip_rotation=True)
         os.remove(temp_path)
     else:
-        print("Special image not found!")
-
+        print("Special image not found!")'''
+   
+    
     # Then process the batch folder
     processor.process_all_images()
