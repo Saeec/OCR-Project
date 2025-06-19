@@ -1,0 +1,128 @@
+Image: 1
+    Detected Text: RENISHAW
+    Coordinates: (37, 307, 584, 140)
+    Confidence: 0.9993
+    Detected Text: OmP6O
+    Coordinates: (153, 422, 399, 117)
+    Confidence: 0.7003
+    Detected Text: MADE IN IRELAND
+    Coordinates: (149, 544, 405, 62)
+    Confidence: 0.9559
+    Detected Text: SERIAL No. 6EC427
+    Coordinates: (134, 613, 423, 56)
+    Confidence: 0.6871
+
+Image: 2
+    Detected Text: IN
+    Coordinates: (480, 578, 56, 48)
+    Confidence: 0.9993
+    Detected Text: RENISHAW
+    Coordinates: (208, 292, 607, 227)
+    Confidence: 0.9157
+    Detected Text: rmp6o
+    Coordinates: (355, 424, 390, 184)
+    Confidence: 0.3124
+    Detected Text: MADE
+    Coordinates: (333, 547, 151, 75)
+    Confidence: 0.9996
+    Detected Text: IRELAND
+    Coordinates: (526, 577, 194, 92)
+    Confidence: 0.9312
+    Detected Text: SERIAL
+    Coordinates: (307, 608, 180, 78)
+    Confidence: 0.9339
+    Detected Text: NO
+    Coordinates: (476, 635, 92, 66)
+    Confidence: 0.5722
+    Detected Text: 1XAK27
+    Coordinates: (558, 650, 160, 80)
+    Confidence: 0.5556
+
+Image: 3
+    Detected Text: 5
+    Coordinates: (496, 77, 306, 390)
+    Confidence: 0.3120
+    Detected Text: 7
+    Coordinates: (404, 228, 176, 197)
+    Confidence: 0.1338
+    Detected Text: Ke
+    Coordinates: (407, 775, 192, 168)
+    Confidence: 0.1978
+
+Image: 4
+    Detected Text: 3
+    Coordinates: (282, 52, 72, 74)
+    Confidence: 0.5559
+    Detected Text: 8
+    Coordinates: (538, 254, 50, 74)
+    Confidence: 0.9990
+    Detected Text: 1
+    Coordinates: (963, 151, 52, 170)
+    Confidence: 0.4734
+    Detected Text: 2
+    Coordinates: (522, 326, 24, 26)
+    Confidence: 0.4478
+    Detected Text: 1 2
+    Coordinates: (894, 322, 126, 76)
+    Confidence: 0.2587
+    Detected Text: 1
+    Coordinates: (527, 18, 82, 236)
+    Confidence: 0.0579
+    Detected Text: 1
+    Coordinates: (211, 106, 210, 581)
+    Confidence: 0.2876
+    Detected Text: 8
+    Coordinates: (340, 136, 152, 456)
+    Confidence: 0.4330
+    Detected Text: 1
+    Coordinates: (513, 331, 142, 327)
+    Confidence: 0.9120
+    Detected Text: 1
+    Coordinates: (980, 390, 52, 152)
+    Confidence: 0.3593
+
+Image: 5
+    Detected Text: 2WF039
+    Coordinates: (66, 254, 254, 72)
+    Confidence: 0.5560
+    Detected Text: TP2OO
+    Coordinates: (71, 357, 260, 86)
+    Confidence: 0.2878
+
+Image: 6
+    Detected Text: Serial No;
+    Coordinates: (130, 56, 100, 32)
+    Confidence: 0.8290
+    Detected Text: 8C2H92
+    Coordinates: (128, 77, 93, 36)
+    Confidence: 0.9873
+    Detected Text: UK
+    Coordinates: (119, 145, 64, 38)
+    Confidence: 0.9223
+    Detected Text: CA
+    Coordinates: (117, 175, 68, 40)
+    Confidence: 0.9707
+    Detected Text: Ce
+    Coordinates: (186, 146, 80, 82)
+    Confidence: 0.1732
+    Detected Text: Serial  No:
+    Coordinates: (118, 588, 112, 30)
+    Confidence: 0.7680
+    Detected Text: M1GL5O
+    Coordinates: (124, 613, 90, 30)
+    Confidence: 0.3307
+    Detected Text: C€
+    Coordinates: (154, 678, 98, 76)
+    Confidence: 0.4928
+    Detected Text: Seral No:
+    Coordinates: (99, 987, 118, 37)
+    Confidence: 0.4470
+    Detected Text: SNJA1I
+    Coordinates: (99, 1013, 99, 40)
+    Confidence: 0.3861
+    Detected Text: YS(6
+    Coordinates: (83, 1079, 180, 90)
+    Confidence: 0.0965
+    Detected Text: MaDEl
+    Coordinates: (211, 223, 53, 31)
+    Confidence: 0.0737
